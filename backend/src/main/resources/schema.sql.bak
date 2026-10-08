@@ -1,0 +1,39 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(255),
+    role VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS dsa_question (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    description TEXT,
+    difficulty VARCHAR(50),
+    category VARCHAR(100),
+    example_input TEXT,
+    example_output TEXT,
+    constraints TEXT
+);
+
+CREATE TABLE IF NOT EXISTS mock_interview (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    job_title VARCHAR(255),
+    feedback TEXT,
+    score INT,
+    session_date DATETIME,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS aptitude_question (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    question_text TEXT,
+    optiona VARCHAR(255),
+    optionb VARCHAR(255),
+    optionc VARCHAR(255),
+    optiond VARCHAR(255),
+    correct_answer VARCHAR(10),
+    category VARCHAR(100)
+);
